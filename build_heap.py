@@ -1,8 +1,18 @@
 # python3
 
-swaps = []
+
+       
+def build_heap(data):
+    swaps = []
+    n = len(data)
+    for i in range(n//2, -1, -1):
+        heapify(i, n, data)
+    # TODO: Create heap and heap sort
+    # try to achieve  O(n) and not O(n2)
+    return swaps
 
 def heapify(i, n, data):
+    swaps = []
     min = i
     left = 2 * i + 1
     right = 2 * i + 2
@@ -16,17 +26,8 @@ def heapify(i, n, data):
         data[i], data[min] = data[min], data[i]
         heapify(min, n, data)
         
-        
-def build_heap(data):
-    
-    n = len(data)
-    for i in range(n//2, -1, -1):
-        heapify(i, n, data)
-    # TODO: Create heap and heap sort
-    # try to achieve  O(n) and not O(n2)
-    return swaps
 def main():
-    
+    swaps = []
     # TODO : add input and corresponding checks
     # add another input for I or F 
     # first two tests are from keyboard, third test is from a file
@@ -48,7 +49,6 @@ def main():
                 data = (list(map(int, txt.split())))
                 assert len(data) == n
                 swaps = build_heap(data)
-
 
 
     # input from keyboard
