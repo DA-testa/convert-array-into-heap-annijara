@@ -7,13 +7,13 @@ swaps = []
 def build_heap(data):
     
     n = len(data)
-    for i in range(n//2, -1, -1):  # parent(i) = floor(i/2)
+    for i in range((n//2), -1, -1):  # parent(i) = floor(i/2)
         heapify(data, i, n)       
     return swaps
 
 def heapify(data, i, n):
  
-    min = i  #atrod virsotnes min vērtību
+    min = i  #atrod virsotnes minimālo vērtību
     left = 2 * i + 1 
     right = 2 * i + 2
     
