@@ -1,30 +1,32 @@
 # python3
 
+swaps = []    
 
-swaps = []       
+# TODO: Create heap and heap sort
+# try to achieve  O(n) and not O(n2)      
 def build_heap(data):
-
+    
     n = len(data)
-    for i in range(n//2, -1, -1):
-        heapify(i, n, data)
-    # TODO: Create heap and heap sort
-    # try to achieve  O(n) and not O(n2)
+    for i in range(n//2, -1, -1):  # parent(i) = floor(i/2)
+        heapify(data, i, n)
+        
     return swaps
 
-def heapify(i, n, data):
+def heapify(data, i, n):
  
-    min = i
-    left = 2 * i + 1
+    min = i  #atrod virsotnes min vērtību
+    left = 2 * i + 1 
     right = 2 * i + 2
     
+    #sakārto koku augošā secībā 
     if n > left and data[left] < data[min]:
         min = left
     if n > right and data[right] < data[min]:
         min = right
-    if min != i:
-        swaps.append([i, min])
-        data[i], data[min] = data[min], data[i]
-        heapify(min, n, data)
+    if min != i: #ja dotā min vērtība nav koka virsotne, tad notiek swapping 
+        swaps.append([i, min]) #i, j vērtības
+        data[i], data[min] = data[min], data[i] #swapping
+        heapify(data, i, min) #veido heap
         
 def main():
    
@@ -49,8 +51,14 @@ def main():
                 data = (list(map(int, txt.split())))
                 assert len(data) == n
                 swaps = build_heap(data)
-
-
+                
+    # TODO: output how many swaps were made, 
+    # this number should be less than 4n (less than 4*len(data))
+    print(len(swaps))
+    for i, j in swaps:
+        print(i, j)
+        
+        
     # input from keyboard
 # n = int(input())
 # data = list(map(int, input().split()))
@@ -62,14 +70,7 @@ def main():
     # and give back all swaps
 #swaps = build_heap(data)
 
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
     # output all swaps
-    print(len(swaps))
-    for i, j in swaps:
-        print(i, j)
 
 
 if __name__ == "__main__":
