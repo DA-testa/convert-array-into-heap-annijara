@@ -40,7 +40,7 @@ def main():
     elif "F" in modee:
         num = input()
         if num != "a":
-            with open("./test/"+ num, mode="r") as fails:
+            with open("./tests/"+ num, mode="r") as fails:
                 text = fails.read()
                 x = text.splitlines()
                 n = int(x[0])
