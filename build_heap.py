@@ -8,8 +8,7 @@ def build_heap(data):
     
     n = len(data)
     for i in range(n//2, -1, -1):  # parent(i) = floor(i/2)
-        heapify(data, i, n)
-        
+        heapify(data, i, n)       
     return swaps
 
 def heapify(data, i, n):
@@ -26,7 +25,7 @@ def heapify(data, i, n):
     if min != i: #ja dotā min vērtība nav koka virsotne, tad notiek swapping 
         swaps.append([i, min]) #i, j vērtības
         data[i], data[min] = data[min], data[i] #swapping
-        heapify(data, i, min) #veido heap
+        heapify(data, min, n) #veido heap
         
 def main():
    
@@ -54,6 +53,7 @@ def main():
                 
     # TODO: output how many swaps were made, 
     # this number should be less than 4n (less than 4*len(data))
+    
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
